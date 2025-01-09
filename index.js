@@ -4,8 +4,8 @@ const app = express();
 const connect = require("./db/db");
 const routes = require("./routes/router");
 const cors = require('cors');
-const Modules = require('./model/course');
-
+const cookieParse = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 // defining port
 const PORT = process.env.PORT || 4000;
 
@@ -22,6 +22,8 @@ app.use(cors({
 }))
 // for parsing json req
 app.use(express.json())
+// Parsing cookie
+app.use(cookieParser())
 
 // routing
 app.use("/", routes)

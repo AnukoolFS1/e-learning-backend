@@ -30,7 +30,7 @@ const signin = async (req, res) => {
         }
         const matchPass = await bcrypt.compare(password, user.password)
 
-        if (!matchPass) return res.status(400).json({ msg: "Email or Password is incorrect" })
+        if (!matchPass) return res.status(401).json({ msg: "Email or Password is incorrect" })
 
         const token = createToken(user)
 
@@ -38,7 +38,7 @@ const signin = async (req, res) => {
             httpOnly: true,
             path: "/",
             // secure: true,
-            maxAge: 1000 * 60 * 6
+            maxAge: 1000 * 60 * 60 * 6
         }).json({ msg: "login successful" })
     } catch (err) {
         return errorHandle(err, res)

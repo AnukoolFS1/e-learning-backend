@@ -43,6 +43,6 @@ users.pre("save", async function (next) {
     next()
 })
 
-const Users = new model("user", users);
+const Users = model("user", users);
 
 module.exports = Users;

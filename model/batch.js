@@ -27,6 +27,6 @@ const batch = new Schema({
     }
 }, { timestamps: true })
 
-const Batch = new model("batch", batch)
+const Batch = model("batch", batch)
 
 module.exports = Batch;

@@ -15,6 +15,6 @@ const modules = new Schema({
     lessons: [lesson]
 })
 
-const Modules = new model("module", modules);
+const Modules = model("module", modules);
 
 module.exports = Modules
