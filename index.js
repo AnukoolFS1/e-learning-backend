@@ -18,6 +18,8 @@ app.use(cors({
     methods:["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }))
+// for parsing json req
+app.use(express.json())
 
 // routing
 app.use("/", routes)
