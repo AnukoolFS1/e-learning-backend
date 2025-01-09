@@ -1,0 +1,43 @@
+{
+    "modules": [
+        {
+            "name": "HTML & CSS Basics",
+            "description": "Understand the fundamentals of web structure and styling.",
+            "lessons": [
+                {
+                    "title": "Introduction to HTML"
+                },
+                {
+                    "title": "HTML Forms and Tables"
+                },
+                {
+                    "title": "Introduction to CSS"
+                }
+            ]
+        },
+        {
+            "name": "JavaScript Basics",
+            "description": "Learn the core concepts of JavaScript to make your web pages dynamic.",
+            "lessons": [
+                {
+                    "title": "JavaScript Fundamentals"
+                },
+                {
+                    "title": "DOM Manipulation"
+                }
+            ]
+        },
+        {
+            "name": "React Basics",
+            "description": "Learn the fundamentals of building user interfaces with React.",
+            "lessons": [
+                {
+                    "title": "Introduction to React"
+                },
+                {
+                    "title": "State and Props"
+                }
+            ]
+        }
+    ]
+}

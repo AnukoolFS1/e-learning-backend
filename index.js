@@ -4,6 +4,7 @@ const app = express();
 const connect = require("./db/db");
 const routes = require("./routes/router");
 const cors = require('cors');
+const Modules = require('./model/course');
 
 // defining port
 const PORT = process.env.PORT || 4000;
