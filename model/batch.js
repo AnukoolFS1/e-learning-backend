@@ -5,7 +5,11 @@ const batch = new Schema({
         type: String,
         required: true
     },
-    enrolledStudent: {
+    instructor:{
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    enrolledStudents: {
         type: [Schema.Types.ObjectId],
         required: true,
         ref: "user"
@@ -20,7 +24,9 @@ const batch = new Schema({
     },
     studyMaterials: {
         type: [Schema.Types.ObjectId],
-    },
+    }
 }, { timestamps: true })
 
 const Batch = new model("batch", batch)
+
+module.exports = Batch;
