@@ -7,7 +7,7 @@ const course = new Schema({
     },
     modules: {
         type: [Schema.Types.ObjectId],
-        ref: "modules"
+        ref: "module"
     }
 })
 

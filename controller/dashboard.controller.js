@@ -1,6 +1,7 @@
 const BatchModel = require("../model/batch");
 const CourseModel = require("../model/course");
-const Users = require("../model/course")
+const Users = require("../model/users");
+const Modules = require('../model/modules')
 
 const BatchResources = async (req, res, next) => {
     const user = req.user;
@@ -17,9 +18,9 @@ const BatchResources = async (req, res, next) => {
 }
 
 const courseResourse = async (req, res, next) => {
-    const course = await CourseModel.find().populate("modules");
+    const courses = await CourseModel.find().populate("modules");
 
-    req.courses = course
+    req.courses = courses
     next()
 }
 
