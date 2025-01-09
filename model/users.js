@@ -23,6 +23,7 @@ const users = new Schema({
         type: String,
         required: true,
         enum: ["student", "instructor", "admin"],
+        lowercase: true,
         default: "student"
     }
 })
