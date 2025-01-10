@@ -48,9 +48,15 @@ const signin = async (req, res) => {
     }
 }
 
+const logout = (req, res) => {
+    res.clearCookie('token', { httpOnly: true, path: '/' });
+    res.status(200).json({msg:"logout"})
+}
+
 
 module.exports = {
     signup,
     signin,
-    errorHandle
+    errorHandle,
+    logout
 }
