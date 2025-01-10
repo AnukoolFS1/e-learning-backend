@@ -1,13 +1,13 @@
 const routes = require("express").Router();
 const multer = require('multer');
 const { signup, signin } = require("../controller/form.controller");
-const {BatchResources, courseResourse, Students, Instructor} = require("../controller/dashboard.controller");
+const { BatchResources, courseResourse, Students, Instructor } = require("../controller/dashboard.controller");
 const { AuthenticateUser } = require("../controller/auth.controller");
-const { createBatch, addStudentToBatch } = require("../controller/batch.controller");
-const upload = multer({dest:'uploads/'})
+const { createBatch, addStudentToBatch, removeStudentFromBatch } = require("../controller/batch.controller");
+const upload = multer({ dest: 'uploads/' })
 
 // Login and Sing up
-routes.post('/signup',upload.single(""), signup)
+routes.post('/signup', upload.single(""), signup)
 routes.post('/signin', signin)
 
 
@@ -16,8 +16,9 @@ routes.get('/', AuthenticateUser, BatchResources, courseResourse, Students, Inst
 
 
 //batches
-routes.post('/batch', createBatch)
+routes.post('/batch', AuthenticateUser, createBatch)
 
-routes.put('/batch/students', addStudentToBatch)
+routes.put('/batch/addstudents', AuthenticateUser, addStudentToBatch)
+routes.put('/batch/removestudents', AuthenticateUser, removeStudentFromBatch)
 
 module.exports = routes;

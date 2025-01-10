@@ -4,7 +4,6 @@ const app = express();
 const connect = require("./db/db");
 const routes = require("./routes/router");
 const cors = require('cors');
-const cookieParse = require('cookie-parser');
 const cookieParser = require('cookie-parser');
 // defining port
 const PORT = process.env.PORT || 4000;
@@ -15,8 +14,8 @@ connect()
 // middleware
 // for cors
 app.use(cors({
-    origin:"http://localhost:5173",
-    methods:["GET", "POST", "PUT", "DELETE"],
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true
 }))
