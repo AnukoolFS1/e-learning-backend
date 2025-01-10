@@ -8,11 +8,20 @@ const BatchResources = async (req, res, next) => {
 
     let batches
     if(user.role === "admin"){
-        batches = await BatchModel.find().lean();
+        batches = await BatchModel.find().populate([
+            { path: 'instructor', select: '-password' },
+            { path: 'enrolledStudents', select: '-password' },
+            { path: "course", select: "name"}
+        ]).lean();
     }else{
-        batches = await BatchModel.find({$or:[{instructor: user.id}, {enrolledStudents: {$in: user.id}}]}).lean()
+        batches = await BatchModel.find({$or:[{instructor: user.id}, {enrolledStudents: {$in: user.id}}]})
+        .populate([
+            { path: 'instructor', select: '-password' },
+            { path: 'enrolledStudents', select: '-password' },
+            { path: "course", select: "name"}
+        ]).lean()
     }
-    
+    console.log(batches)
     req.batches = batches
     next()
 }

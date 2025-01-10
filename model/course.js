@@ -8,6 +8,9 @@ const course = new Schema({
     modules: {
         type: [Schema.Types.ObjectId],
         ref: "module"
+    },
+    duration:{
+        type: String,
     }
 })
 

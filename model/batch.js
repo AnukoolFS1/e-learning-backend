@@ -7,7 +7,8 @@ const batch = new Schema({
     },
     instructor:{
         type: Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref:"user"
     },
     enrolledStudents: {
         type: [Schema.Types.ObjectId],
@@ -17,10 +18,6 @@ const batch = new Schema({
     course: {
         type: Schema.Types.ObjectId,
         ref: "course"
-    },
-    duration: {
-        type: String,
-        required: true,
     },
     studyMaterials: {
         type: [Schema.Types.ObjectId],

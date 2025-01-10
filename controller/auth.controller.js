@@ -21,7 +21,7 @@ function verifyToken(token) {
 
 function AuthenticateUser(req, res, next) {
     const token = req.cookies.token;
-    if (!token) return req.status(400).json({ msg: "Login Required" });
+    if (!token) return res.status(400).json({ msg: "Login Required" });
 
     try {
         const user = verifyToken(token)
