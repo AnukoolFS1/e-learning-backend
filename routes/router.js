@@ -3,7 +3,7 @@ const multer = require('multer');
 const { signup, signin } = require("../controller/form.controller");
 const {BatchResources, courseResourse, Students, Instructor} = require("../controller/dashboard.controller");
 const { AuthenticateUser } = require("../controller/auth.controller");
-const { createBatch } = require("../controller/batch.controller");
+const { createBatch, addStudentToBatch } = require("../controller/batch.controller");
 const upload = multer({dest:'uploads/'})
 
 // Login and Sing up
@@ -17,5 +17,7 @@ routes.get('/', AuthenticateUser, BatchResources, courseResourse, Students, Inst
 
 //batches
 routes.post('/batch', createBatch)
+
+routes.put('/batch/students', addStudentToBatch)
 
 module.exports = routes;

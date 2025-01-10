@@ -51,5 +51,6 @@ const signin = async (req, res) => {
 
 module.exports = {
     signup,
-    signin
+    signin,
+    errorHandle
 }
