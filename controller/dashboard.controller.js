@@ -1,7 +1,7 @@
 const BatchModel = require("../model/batch");
 const CourseModel = require("../model/course");
 const Users = require("../model/users");
-const Modules = require('../model/modules')
+require('../model/modules')
 
 const BatchResources = async (req, res, next) => {
     const user = req.user;
@@ -26,7 +26,7 @@ const courseResourse = async (req, res, next) => {
 
 const Students = async (req, res, next) => {
     if(req.user.role !== "student"){
-        const students = await Users.find({role: "student"}).lean()
+        const students = await Users.find({role: "student"}, {password:0}).lean()
         req.students = students
     }
     
@@ -35,7 +35,7 @@ const Students = async (req, res, next) => {
 
 const Instructor = async (req, res, next) => {
     if(req.user.role === "admin"){
-        const instructors = await Users.find({role: "instructor"}).lean()
+        const instructors = await Users.find({role: "instructor"}, {password: 0}).lean()
         req.instructors = instructors
     }
     res.status(200).json({user:req.user,batches: req.batches,instructors: req.instructors, students: req.students,courses: req.courses })

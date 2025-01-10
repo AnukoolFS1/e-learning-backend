@@ -11,11 +11,14 @@ const errorHandle = (err, res) => {
 const signup = async (req, res) => {
     const { name, email, phone, password, role } = req.body
 
+    if(!name || !email || !phone || !password ) return res.status(400).json({msg:"all fields are mandatory"})
+
     try {
         const newUser = new UserModel({ name, email, phone, password, role })
         await newUser.save();
         res.status(201).json({ msg: "user created" })
     } catch (err) {
+        if(err.code === 11000) return res.status(400).json({msg:"email already exists"})
         return errorHandle(err, res)
     }
 }
@@ -41,7 +44,7 @@ const signin = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 6
         }).json({ msg: "login successful" })
     } catch (err) {
-        return errorHandle(err, res)
+        return errorHandle(err, res);
     }
 }
 
