@@ -1,5 +1,4 @@
 const routes = require("express").Router();
-const mime = require('mime')
 const multer = require('multer');
 const { signup, signin, logout } = require("../controller/form.controller");
 const { BatchResources, courseResourse, Students, Instructor, studyMaterials } = require("../controller/dashboard.controller");
