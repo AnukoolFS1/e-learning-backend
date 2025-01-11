@@ -1,5 +1,5 @@
 const BatchModel = require("../model/batch");
-const { verifyToken } = require("./auth.controller");
+const Materials = require('../model/materials')
 const { errorHandle } = require("./form.controller");
 
 const createBatch = async (req, res) => {
@@ -53,6 +53,11 @@ const removeStudentFromBatch = async (req, res) => {
     } catch (err) {
         errorHandle(err, res)
     }
+}
+
+const fileUpload = await (req, res) => {
+    const 
+    console.log(req.file)
 }
 
 

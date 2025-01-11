@@ -21,7 +21,6 @@ const BatchResources = async (req, res, next) => {
             { path: "course", select: "name"}
         ]).lean()
     }
-    console.log(batches)
     req.batches = batches
     next()
 }
