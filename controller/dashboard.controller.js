@@ -12,7 +12,8 @@ const BatchResources = async (req, res, next) => {
         batches = await BatchModel.find().populate([
             { path: 'instructor', select: '-password' },
             { path: 'enrolledStudents', select: '-password' },
-            { path: "course", select: "name" }
+            { path: "course", select: "name" },
+            { path: "studyMaterials" }
         ]).lean();
     } else {
         batches = await BatchModel.find({ $or: [{ instructor: user.id }, { enrolledStudents: { $in: user.id } }] })
