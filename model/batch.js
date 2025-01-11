@@ -21,6 +21,7 @@ const batch = new Schema({
     },
     studyMaterials: {
         type: [Schema.Types.ObjectId],
+        ref: "material"
     }
 }, { timestamps: true })
 

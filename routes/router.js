@@ -1,41 +1,23 @@
-require('dotenv').config()
 const routes = require("express").Router();
+const mime = require('mime')
 const multer = require('multer');
 const { signup, signin, logout } = require("../controller/form.controller");
 const { BatchResources, courseResourse, Students, Instructor } = require("../controller/dashboard.controller");
 const { AuthenticateUser } = require("../controller/auth.controller");
-const { createBatch, addStudentToBatch, removeStudentFromBatch } = require("../controller/batch.controller");
-const { v2: cloudinary } = require('cloudinary');
-const { CloudinaryStorage } = require('')
+const { createBatch, addStudentToBatch, removeStudentFromBatch, fileUpload } = require("../controller/batch.controller");
 
-cloudinary.config({
-    cloud_name: process.env.CloudName,
-    api_key: process.env.APIKey,
-    api_secret: process.env.APISecret,
-});
 
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: (req, file) => {
-        let resourceType = 'auto'; 
-
-        const mimeType = mime.lookup(file.originalname);
-        if (mimeType) {
-            if (mimeType.startsWith('image/')) {
-                resourceType = 'image'; // For images
-            } else if (mimeType.startsWith('video/')) {
-                resourceType = 'video'; // For videos
-            } else if (mimeType === 'application/pdf') {
-                resourceType = 'raw'; // For PDFs, store as raw file
-            }
-        }
-
-        return {
-            folder: 'uploads', 
-            resource_type: resourceType, 
-        };
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads')
     },
-});
+    filename: function (req, file, cb) {
+        const uniqueSuffix = (Date.now() + '-' + Math.round(Math.random() * 1E9).toString()+ '.' + file.mimetype.split('/')[1])
+        cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+})
+
+
 
 const upload = multer({ storage });
 
@@ -56,7 +38,7 @@ routes.put('/batch/addstudents', AuthenticateUser, addStudentToBatch)
 routes.put('/batch/removestudents', AuthenticateUser, removeStudentFromBatch)
 
 // handle file
-routes.post('/batch/addfile',upload.single("file"),)
+routes.post('/batch/addfile', upload.single("file"), fileUpload)
 
 // log out
 routes.get('/logout', logout)

@@ -6,12 +6,11 @@ const materail = new Schema({
         required: true
     },
     path: {
-        type: string,
+        type: String,
         required: true
     },
-    course: {
-        type: Schema.Types.ObjectId,
-        ref:"course"
+    publicid:{
+        type: String,
     }
 }, { timestamps: true })
 
