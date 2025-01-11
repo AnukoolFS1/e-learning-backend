@@ -26,6 +26,7 @@ const signup = async (req, res) => {
 const signin = async (req, res) => {
     const { email, password } = req.body
 
+    if(!email || !password) return res.status(400).json({msg:"all fields are required"})
     try {
         const user = await UserModel.findOne({ email }).lean()
         if (!user) {
