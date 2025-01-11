@@ -2,7 +2,7 @@ const routes = require("express").Router();
 const mime = require('mime')
 const multer = require('multer');
 const { signup, signin, logout } = require("../controller/form.controller");
-const { BatchResources, courseResourse, Students, Instructor } = require("../controller/dashboard.controller");
+const { BatchResources, courseResourse, Students, Instructor, studyMaterials } = require("../controller/dashboard.controller");
 const { AuthenticateUser } = require("../controller/auth.controller");
 const { createBatch, addStudentToBatch, removeStudentFromBatch, fileUpload } = require("../controller/batch.controller");
 
@@ -28,7 +28,7 @@ routes.post('/signin', signin)
 
 
 // resources
-routes.get('/', AuthenticateUser, BatchResources, courseResourse, Students, Instructor)
+routes.get('/', AuthenticateUser, BatchResources, courseResourse, Students, studyMaterials,Instructor)
 
 
 //batches
