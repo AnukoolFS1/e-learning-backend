@@ -14,9 +14,9 @@ connect()
 // middleware
 // for cors
 app.use(cors({
-    origin: "https://e-learningplatformapp.netlify.app/",
+    origin: "https://e-learningplatformapp.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
 }))
 // for parsing json req
