@@ -72,7 +72,7 @@ const fileUpload = async (req, res) => {
 
     const filepath = path.resolve(req.file.destination, req.file.filename);
 
-    let resourceType = 'auto';  // Default to auto, which Cloudinary will try to determine
+    let resourceType = 'auto';
 
     const mimeType = req.file.mimetype;
     if (mimeType.startsWith('image/')) {
