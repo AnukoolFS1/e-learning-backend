@@ -42,7 +42,7 @@ const signin = async (req, res) => {
             path: "/",
             secure: true,
             maxAge: 1000 * 60 * 60 * 6
-        }).json({ msg: "login successful", token })
+        }).json({ msg: "login successful" })
     } catch (err) {
         return errorHandle(err, res);
     }
