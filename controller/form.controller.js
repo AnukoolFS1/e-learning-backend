@@ -40,7 +40,7 @@ const signin = async (req, res) => {
         res.status(200).cookie("token", token, {
             httpOnly: true,
             path: "/",
-            // secure: true,
+            secure: true,
             maxAge: 1000 * 60 * 60 * 6
         }).json({ msg: "login successful" })
     } catch (err) {
