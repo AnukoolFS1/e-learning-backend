@@ -14,7 +14,7 @@ connect()
 // middleware
 // for cors
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://e-learningplatformapp.netlify.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true
