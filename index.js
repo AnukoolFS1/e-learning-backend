@@ -15,7 +15,7 @@ connect()
 // for cors
 app.use(cors({
     origin: "https://e-learningplatformapp.netlify.app/",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTION"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: true
 }))
