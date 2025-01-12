@@ -42,7 +42,7 @@ const signin = async (req, res) => {
             httpOnly: true,
             path: "/",
             secure: true,
-            Samesite: "None",
+            sameSite: "None",
             maxAge: 1000 * 60 * 60 * 6
         }).json({ msg: "login successful" })
     } catch (err) {
