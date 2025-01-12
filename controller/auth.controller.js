@@ -33,4 +33,9 @@ function AuthenticateUser(req, res, next) {
     }
 }
 
-module.exports = { createToken, verifyToken, AuthenticateUser }
+function AuthorizeUser(req, res, next) {
+    if(req.user.role === "admin") return next();
+    else return res.status(400).json({msg:"you are not authorized to do this task"})
+}
+
+module.exports = { createToken, verifyToken, AuthenticateUser, AuthorizeUser }
